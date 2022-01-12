@@ -1,9 +1,11 @@
+import UserResults from "../components/users/UserResults"
+
 function Home() {
     return (
-        <div>
-            Home Page
-            {process.env.REACT_APP_GITHUB_TOKEN}
-        </div>
+        <>
+            {/* S E A R C H   C O M P O N E N T */}
+            <UserResults />
+        </>
     )
 }
 
