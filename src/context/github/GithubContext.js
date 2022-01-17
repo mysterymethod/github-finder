@@ -9,12 +9,16 @@ const GITHUB_TOKEN = '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'
 export const GithubProvider = ({ children }) => {
   const initialState = {
     users: [],
-    loading: true,
+    loading: false,
   }
+
+  // S E T  L O A D I N G
+  const setLoading = () => dispatch({ type: 'SET_LOADING' })
 
   const [state, dispatch] = useReducer(githubReducer, initialState)
 
   const fetchUsers = async () => {
+    setLoading()  
     const response = await fetch(`${GITHUB_URL}/users`, {
       headers: {
         Authorization: `token ${GITHUB_TOKEN}`,
@@ -28,6 +32,8 @@ export const GithubProvider = ({ children }) => {
       type: 'GET_USERS',
       payload: data,
     })
+
+    
   }
 
   return (
