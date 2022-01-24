@@ -6,6 +6,7 @@ function Home() {
         <>
             {/* S E A R C H   C O M P O N E N T */}
             <UserSearch />
+            <UserResults />
         </>
     )
 }

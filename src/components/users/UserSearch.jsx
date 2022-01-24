@@ -4,7 +4,7 @@ import GithubContext from '../../context/github/GithubContext'
 function UserSearch() {
   const [text, setText] = useState('')
 
-  const { users, searchUsers, fetchUsers } = useContext(GithubContext)
+  const { users, searchUsers, clearScreen } = useContext(GithubContext)
 
   const handleChange = (event) => setText(event.target.value)
 
@@ -15,13 +15,14 @@ function UserSearch() {
       alert('Please enter a valid Username')
     } else {
       // searchUsers(text)
-      fetchUsers()
+      searchUsers(text)
       setText('')
     }
   }
 
+
   return (
-    <div className="grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 gap-8">
+    <div className="grid mb-10 grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 gap-8">
       <div>
         <form onSubmit={handleSubmit}>
           <div className="form-control">
@@ -45,7 +46,7 @@ function UserSearch() {
       </div>
       {users.length > 0 && (
         <div>
-          <button className="btn btn-ghost btn-lg">CLEAR</button>
+          <button className="btn btn-ghost btn-lg" onClick={() => clearScreen()}>CLEAR</button>
         </div>
       )}
     </div>
